@@ -1,0 +1,41 @@
+﻿@model IEnumerable<smartmoney.Models.Categoria>
+
+@{
+    ViewData["Title"] = "Categorias";
+}
+
+
+<div class="container my-5">
+    <div class="d-flex align-items-center gap-4">
+        <h1>Categorias</h1>
+        <a class="btn btn-primary btn-lg text-white fw-bold" asp-action="Create">+ NOVA CATEGORIA</a>
+    </div>
+    <div class="col mt-4">
+            <div class="card table-responsive">
+                <table class="table rounded-1 overflow-hidden">
+                    <thead>
+                        <tr class="bg-primary text-white">
+                            <th>
+                                @Html.DisplayNameFor(model => model.Titulo)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                <tbody>
+                    @foreach (var item in Model) {
+                        <tr class="text-secondary">
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Titulo)
+                            </td>
+                            <td class="d-flex gap-3">
+                             <a asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-fill"></i></a>
+                             <a asp-action="Details" asp-route-id="@item.Id"><i class="bi bi-file-earmark-text-fill"></i></a>
+                             <a asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash-fill"></i></a>
+                            </td>
+                        </tr>
+                    }
+                 </tbody>
+                 </table>
+            </div>
+        </div>
+</div>

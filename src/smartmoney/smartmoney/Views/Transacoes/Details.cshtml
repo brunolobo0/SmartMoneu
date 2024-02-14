@@ -1,0 +1,53 @@
+﻿@model smartmoney.Models.Transacao
+
+@{
+    ViewData["Title"] = "Detalhes";
+}
+
+<div class="container my-5">
+    <h1>Detalhes da Transação</h1>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Valor)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Valor)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Data)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Data)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Tipo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Tipo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Carteira)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Carteira.Titulo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Categoria)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Categoria.Titulo)
+        </dd>
+    </dl>
+    <div>
+        <a class="text-white btn btn-primary fw-bold" asp-action="Edit" asp-route-id="@Model?.Id">Editar</a>
+        <a class="btn btn-outline-secondary ms-1 fw-bold" asp-action="Index">Voltar</a>
+    </div>
+</div>
+

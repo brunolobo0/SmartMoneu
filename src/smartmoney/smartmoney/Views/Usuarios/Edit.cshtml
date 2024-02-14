@@ -1,0 +1,49 @@
+﻿@using System.Security.Claims;
+
+@model smartmoney.Models.ViewModels.UsuarioEditInfo;
+
+@{
+    ViewData["Title"] = "Meu perfil";
+}
+
+<div class="container my-5">
+    <h1>Meu perfil</h1>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <h2 class="fs-3">Editar dados</h2>
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    <label asp-for="Nome" class="form-label control-label"></label>
+                    <input asp-for="Nome" class="form-control" />
+                    <span asp-validation-for="Nome" class="text-danger"></span>
+                </div>
+                <div class="form-group pt-2">
+                    <label asp-for="Email" class="form-label control-label"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group pt-3">
+                    <input type="submit" value="Atualizar" class="text-white btn btn-primary fw-bold" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <hr />
+    <div class="d-flex flex-row gap-2">
+        <a asp-action="Delete" asp-route-id="@User.FindFirst(ClaimTypes.NameIdentifier)?.Value" class="btn btn-outline-danger">Excluir conta</a>
+        <a asp-action="EditPassword" asp-route-id="@User.FindFirst(ClaimTypes.NameIdentifier)?.Value" class="btn btn-outline-primary">Editar senha</a>
+        @if (User.Identity != null && User.Identity.IsAuthenticated)
+        {
+            <a class="btn btn-outline-secondary" asp-area="" asp-controller="Usuarios" asp-action="Logout">Sair da conta</a>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

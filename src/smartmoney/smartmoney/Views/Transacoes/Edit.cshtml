@@ -1,0 +1,60 @@
+﻿@model smartmoney.Models.Transacao
+
+@{
+    ViewData["Title"] = "Editar transação";
+}
+
+<div class="container my-5">
+    <h1>Editar Transação</h1>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    <label asp-for="Valor" class="form-label control-label"></label>
+                    <input value="@Model.Valor" id="Valor" name="Valor" required data-val-required="The field Valor must be a number." class="form-control" />
+                    <span asp-validation-for="Valor" class="text-danger"></span>
+                </div>
+                <div class="form-group pt-2">
+                    <label asp-for="Data" class="form-label control-label"></label>
+                    <input asp-for="Data" class="form-control" />
+                    <span asp-validation-for="Data" class="text-danger"></span>
+                </div>
+                <div class="form-group pt-2">
+                    <label asp-for="Descricao" class="form-label control-label"></label>
+                    <input asp-for="Descricao" class="form-control" />
+                    <span asp-validation-for="Descricao" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <select hidden asp-for="Tipo" class="form-control" asp-items="Html.GetEnumSelectList<TipoTransacao>()"></select>
+                    <span asp-validation-for="Tipo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <select hidden asp-for="CarteiraId" class="form-control" asp-items="ViewBag.CarteiraId"></select>
+                    <span asp-validation-for="CarteiraId" class="text-danger"></span>
+                </div>
+                <div class="form-group pt-2">
+                    <label asp-for="CategoriaId" class="form-label control-label"></label>
+                    <select asp-for="CategoriaId" class="form-control" asp-items="ViewBag.CategoriaId"></select>
+                    <span asp-validation-for="CategoriaId" class="text-danger"></span>
+                </div>
+                <div class="form-group pt-3">
+                    <input type="submit" value="Salvar" class="text-white btn btn-primary fw-bold" />
+                    <a class="btn btn-outline-secondary ms-1 fw-bold" asp-action="Index">Voltar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+<script>
+    $(document).ready(function ($) {
+        $('#Valor').mask('#0,00', { reverse: true });
+    });
+</script>

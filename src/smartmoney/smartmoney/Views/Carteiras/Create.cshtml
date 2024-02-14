@@ -1,0 +1,38 @@
+﻿@model smartmoney.Models.Carteira
+
+@{
+    ViewData["Title"] = "Criar";
+}
+
+<div class="my-5 container">
+    <h1>Nova Carteira</h1>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Titulo" class="form-label control-label">Título</label>
+                    <input asp-for="Titulo" class="form-control"/>
+                    <span asp-validation-for="Titulo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input asp-for="Saldo" class="form-control" type="hidden" />
+                    <span asp-validation-for="Saldo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <select hidden asp-for="UsuarioId" type="hidden" class="form-control" asp-items="ViewBag.UsuarioId"></select>
+                    <span asp-validation-for="UsuarioId" class="text-danger"></span>
+                </div>
+                <div class="form-group pt-3">
+                    <input type="submit" value="Criar" class="text-white btn btn-primary fw-bold" />
+                    <a class="btn btn-outline-secondary ms-1 fw-bold" asp-action="Index">Voltar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

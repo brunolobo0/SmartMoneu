@@ -1,0 +1,63 @@
+﻿@model smartmoney.Models.Meta
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container my-5">
+
+    <h1>Nova Meta</h1>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Titulo" class="control-label form-label"></label>
+                    <input asp-for="Titulo" class="form-control" />
+                    <span asp-validation-for="Titulo" class="text-danger"></span>
+                </div>
+                <div class="form-group pt-2">
+                    <label asp-for="DataInicial" class="control-label form-label"></label>
+                    <input asp-for="DataInicial" class="form-control" />
+                    <span asp-validation-for="DataInicial" class="text-danger"></span>
+                </div>
+                <div class="form-group pt-2">
+                    <label asp-for="DataFinal" class="control-label form-label"></label>
+                    <input asp-for="DataFinal" class="form-control" />
+                    <span asp-validation-for="DataFinal" class="text-danger"></span>
+                </div>
+                <div class="form-group pt-2">
+                    <label asp-for="ValorMeta" class="control-label form-label"></label>
+                    <input id ="ValorMeta" name="ValorMeta" required data-val-required="The field Valor must be a number." class="form-control" placeholder="Digite o valor que deseja alcançar"/>
+                    <span asp-validation-for="ValorMeta" class="text-danger"></span>
+                </div>
+                <div class="form-group pt-2">
+                    <label asp-for="Valor" class="control-label form-label"></label>
+                    <input id="Valor" name="Valor" required data-val-required="The field Valor must be a number." class="form-control" placeholder="Digite o valor que você possui" />
+                    <span asp-validation-for="Valor" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label hidden asp-for="UsuarioId" class="control-label"></label>
+                    <select hidden asp-for="UsuarioId" class ="form-control" asp-items="ViewBag.UsuarioId"></select>
+                </div>
+                <div class="form-group pt-3">
+                    <input type="submit" value="Criar" class="btn btn-primary fw-bold text-white" />
+                    <a class="btn btn-outline-secondary ms-1 fw-bold" asp-action="Index">Voltar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+<script>
+    $(document).ready(function ($) {
+        $('#Valor').mask('#0,00', { reverse: true });
+        $('#ValorMeta').mask('#0,00', { reverse: true });
+    });
+</script>

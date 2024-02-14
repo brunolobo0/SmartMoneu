@@ -1,0 +1,118 @@
+﻿@model IEnumerable<smartmoney.Models.Transacao>
+
+@{
+    ViewData["Title"] = "Transações";
+}
+
+<div class="container">
+    <div class="d-flex align-items-center gap-4 mt-5">
+        <h1>Transações</h1>
+        <a class="text-white btn btn-primary fw-bold btn-lg" asp-action="Create">+ NOVA TRANSAÇÃO</a>
+    </div>
+
+    <div class="mt-4">
+        <div class="card">
+            <div class="card-body">
+                <form action="/Transacoes" method="get" class="d-flex align-items-center gap-4">
+                    <input type="date" name="data" class="form-control">
+                    <select name="tipo" class="form-select">
+                        <option selected>Selecione o tipo</option>
+                        <option value="0">Receita</option>
+                        <option value="1">Despesa</option>
+                    </select>
+                    <select name="categoria" class="form-select">
+                        <option selected>Selecione a categoria</option>
+                        @foreach (var categoria in ViewBag.categoria)
+                        {
+                         <option value="@(categoria.Id)">@(categoria.Titulo)</option>
+                        }
+                    </select>
+                    <input class="btn btn-primary text-white fw-bold" type="submit" value="Filtrar">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4 mb-5 row">
+        <div class="col">
+            <div class="card table-responsive">
+                <table class="table rounded-1 overflow-hidden">
+                    <thead>
+                        <tr class="bg-primary text-white">
+                            <th>
+                                @Html.DisplayNameFor(model => model.Valor)
+                            </th>
+                            <th class="d-none d-sm-none d-md-block">
+                                @Html.DisplayNameFor(model => model.Data)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Tipo)
+                            </th>
+                            <th class="d-none d-sm-none d-md-block">
+                                @Html.DisplayNameFor(model => model.Carteira)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Categoria)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                @foreach (var item in Model) {
+                        <tr class="text-secondary">
+                            <td>
+                                R$ @Html.DisplayFor(modelItem => item.Valor)
+                            </td>
+                            <td class="d-none d-sm-none d-md-block">
+                                @Html.DisplayFor(modelItem => item.Data)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Tipo)
+                            </td>
+                            <td class="d-none d-sm-none d-md-block">
+                                @Html.DisplayFor(modelItem => item.Carteira.Titulo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Categoria.Titulo)
+                            </td>
+                            <td class="d-flex gap-3">
+                                <a asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-fill"></i></a> 
+                                <a asp-action="Details" asp-route-id="@item.Id"><i class="bi bi-file-earmark-text-fill"></i></a> 
+                                <a asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash-fill"></i></a>
+                            </td>
+                        </tr>
+                }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-3 d-none d-sm-none d-md-none d-lg-block">
+            <div class="d-flex flex-column gap-3">
+                <div class="card flex-fill">
+                    <div class="card-body d-flex gap-2 align-items-center">
+                        <span class="fa-stack fa-2x">
+                            <i class="fa fa-circle fa-stack-2x icon-background text-primary"></i>
+                            <i class="fa fa-arrow-up fa-stack-1x fs-4 text-white"></i>
+                        </span>
+                        <div class="d-flex flex-column">
+                            <span class="text-secondary">Receita total></span>
+                            <span class="fs-5 fw-medium">R$  @ViewBag.receita</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card flex-fill">
+                <div class="card-body d-flex gap-2 align-items-center">
+                    <span class="fa-stack fa-2x">
+                        <i class="fa fa-circle fa-stack-2x icon-background text-danger"></i>
+                        <i class="fa fa-arrow-down fa-stack-1x fs-4 text-white"></i>
+                    </span>
+                    <div class="d-flex flex-column">
+                        <span class="text-secondary">Despesa total></span>
+                        <span class="fs-5 fw-medium">R$  @ViewBag.despesa</span>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>

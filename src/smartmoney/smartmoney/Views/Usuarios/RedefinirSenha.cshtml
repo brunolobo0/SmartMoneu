@@ -1,0 +1,66 @@
+﻿@model smartmoney.Models.ViewModels.UsuarioRedefinirSenha
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="pt-BR" class="h-100">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redefinir senha - SmartMoney</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/smartmoney.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/usuario.css" asp-append-version="true" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="container h-100">
+    <main class="row h-100">
+        <div class="m-auto col-10 col-sm-8 col-md-6 col-lg-5">
+            <div class="my-3">
+                <header class="p-0">
+                    <img src="~/img/logo.svg" alt="Logo" />
+                </header>
+            </div>
+            <h1 class="fs-2">Redefinição de Senha</h1>
+
+            <div>
+                <form asp-action="RedefinirSenha">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Id">
+                    <input type="hidden" asp-for="Token">
+                    <div class="form-group pt-2">
+                        <label asp-for="Senha" class="form-label control-label"></label>
+                        <input asp-for="Senha" class="form-control" />
+                        <span asp-validation-for="Senha" class="text-danger"></span>
+                    </div>
+                    <div class="form-group pt-2">
+                        <label asp-for="ConfirmarSenha" class="form-label control-label"></label>
+                        <input asp-for="ConfirmarSenha" class="form-control" />
+                        <span asp-validation-for="ConfirmarSenha" class="text-danger"></span>
+                    </div>
+                    <div class="form-group pt-3 d-flex flex-row gap-2">
+                        <input type="submit" value="Atualizar" class="text-white btn btn-primary fw-bold" />
+                        <a asp-action="Login" asp-controller="Usuarios" class="text-primary btn fw-bold">Cancelar</a>
+                    </div>
+                </form>
+                <p class="text-danger pt-3">@ViewBag.Message</p>
+            </div>
+        </div>
+    </main>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

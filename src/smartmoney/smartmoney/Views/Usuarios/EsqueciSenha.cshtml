@@ -1,0 +1,28 @@
+﻿@model smartmoney.Models.ViewModels.UsuarioEsqueciSenha
+
+@{
+    Layout = "~/Views/Shared/_LayoutUsuarios.cshtml";
+    ViewData["Title"] = "Recupere sua senha";
+}
+
+<div class="col-11 col-md-5 p-0 py-3 mx-auto my-md-auto">
+    <h3 class="fs-4 text-center">Informe o seu email para a recuperação de senha.</h3>
+    <form asp-action="EsqueciSenha" class="pt-lg-2">
+        <div asp-validation-summary="ModelOnly" class="form-text text-danger"></div>
+        <div class="form-group my-3 my-lg-4">
+            <input asp-for="Email" class="w-100 py-1 py-lg-2 fs-6" placeholder="Email" />
+            <span asp-validation-for="Email" class="form-text text-danger"></span>
+        </div>
+        <div class="form-group my-3 my-lg-4">
+            <input type="submit" value="Recuperar" class="w-100 fw-medium py-lg-2 btn btn-primary text-light" />
+        </div>
+    </form>
+    <p class="form-text text-danger text-center">@Html.Raw(ViewBag.Message)</p>
+    <a class="d-block w-100 text-center text-secondary pt-lg-2" asp-area="" asp-controller="Usuarios" asp-action="Login">Voltar para login</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

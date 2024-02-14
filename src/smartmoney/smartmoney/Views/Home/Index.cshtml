@@ -1,0 +1,118 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<link rel="stylesheet" href="./css/home.css">
+
+<div class="my-5">
+    <section class="container">
+        <h1 class="display-6 pb-4">Aprimore o controle de<br />suas transações.</h1>
+        <div class="d-flex flex-wrap gap-3">
+            <div class="card flex-fill">
+                <div class="card-body d-flex gap-2 align-items-center">
+                    <span class="fa-stack fa-2x">
+                        <i class="fa fa-circle fa-stack-2x icon-background text-secondary"></i>
+                        <i class="fa fa-university fa-stack-1x fs-4 text-white"></i>
+                    </span>
+                    <div class="d-flex flex-column">
+                        <span class="text-secondary">Saldo total></span>
+                        <span class="fs-5 fw-medium">R$  @ViewBag.saldo</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex-fill">
+                <div class="card-body d-flex gap-2 align-items-center">
+                    <span class="fa-stack fa-2x">
+                        <i class="fa fa-circle fa-stack-2x icon-background text-primary"></i>
+                        <i class="fa fa-arrow-up fa-stack-1x fs-4 text-white"></i>
+                    </span>
+                    <div class="d-flex flex-column">
+                        <span class="text-secondary">Receita total></span>
+                        <span class="fs-5 fw-medium">R$  @ViewBag.receita</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex-fill">
+                <div class="card-body d-flex gap-2 align-items-center">
+                    <span class="fa-stack fa-2x">
+                        <i class="fa fa-circle fa-stack-2x icon-background text-danger"></i>
+                        <i class="fa fa-arrow-down fa-stack-1x fs-4 text-white"></i>
+                    </span>
+                    <div class="d-flex flex-column">
+                        <span class="text-secondary">Despesa total></span>
+                        <span class="fs-5 fw-medium">R$  @ViewBag.despesa</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="btn btn-primary fw-bold mt-4 text-white" asp-area="" asp-controller="Carteiras" asp-action="Index">Comece criando uma carteira</a>
+    </section>
+    <section class="mt-5 bg-primary">
+        <div class="container py-5">
+            <div class="d-flex justify-content-between text-white">
+                <div>
+                    <h1 class="display-6 pb-4">Gerencie as categorias<br />das suas transações.</h1>
+                    <div class="d-flex gap-5 pb-4">
+                        <div>
+                            <div>
+                                <span class="fa-stack fa-2x">
+                                    <i class="fa fa-circle fa-stack-2x icon-background text-secondary"></i>
+                                    <i class="fa fa-dollar fa-stack-1x fs-4 text-white"></i>
+                                </span>
+                                <span>Salário</span>
+                            </div>
+                            <div>
+                                <span class="fa-stack fa-2x">
+                                    <i class="fa fa-circle fa-stack-2x icon-background text-secondary"></i>
+                                    <i class="fa fa-bar-chart fa-stack-1x fs-4 text-white"></i>
+                                </span>
+                                <span>Poupança</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <span class="fa-stack fa-2x">
+                                    <i class="fa fa-circle fa-stack-2x icon-background text-secondary"></i>
+                                    <i class="fa fa-home fa-stack-1x fs-4 text-white"></i>
+                                </span>
+                                <span>Moradia</span>
+                            </div>
+                            <div>
+                                <span class="fa-stack fa-2x">
+                                    <i class="fa fa-circle fa-stack-2x icon-background text-secondary"></i>
+                                    <i class="fa fa-sun-o fa-stack-1x fs-4 text-white"></i>
+                                </span>
+                                <span>Lazer</span>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="btn btn-secondary fw-bold" asp-area="" asp-controller="Categorias" asp-action="Index">Criar minhas categorias</a>
+                </div>
+                <div class="d-none d-sm-none d-md-none d-lg-block">
+                    <img class="rounded" src="./img/home/mulher-sorrindo.png" alt="Mulher sorrindo segurando um laptop" />
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container pt-5">
+            <div class="d-flex justify-content-between">
+                <div>
+                    <h1 class="display-6 pb-4">Defina metas e acompanhe<br />seu progresso.</h1>
+                    <div class="card mb-4 me-3">
+                        <div class="card-body">
+                            <h5>Comprar um carro</h5>
+                            <p class="fs-5 fw-bold">Progresso: 25%</p>
+                            <div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar bg-primary" style="width: 25%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="text-white btn btn-primary fw-bold" asp-area="" asp-controller="Metas" asp-action="Index">Criar minhas metas</a>
+                </div>
+                <div class="d-none d-sm-none d-md-none d-lg-block">
+                    <img class="rounded" src="./img/home/homem.png" alt="Homem segurando um laptop" />
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

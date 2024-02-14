@@ -1,0 +1,33 @@
+﻿body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f2f2f2;
+}
+
+a.link-active::after {
+    content: '';
+    display: block;
+    height: 0.313rem;
+    background-color: #20C997;
+    margin-top: 0.75rem;
+}
+
+a.link-inactive:hover{
+    transition: opacity 0.2s;
+    opacity: 0.65;
+}
+
+input {
+    border: none;
+    border-bottom: 1px solid #787878;
+    outline: none;
+}
+
+@media (min-width: 993px) {
+    input.fs-6 {
+        font-size: 20px !important;
+    }
+
+    input[type="submit"] {
+        font-size: 17px;
+    }
+}

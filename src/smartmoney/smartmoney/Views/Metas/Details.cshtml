@@ -1,0 +1,51 @@
+﻿@model smartmoney.Models.Meta
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container my-5">
+    <h1>Detalhes da Meta</h1>
+
+    <div>
+        <h4>Meta</h4>
+        <hr />
+        <dl class="row">
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Titulo)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Titulo)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.DataInicial)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.DataInicial)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.DataFinal)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.DataFinal)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.ValorMeta)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.ValorMeta)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Valor)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Valor)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-primary text-white fw-bold">Editar</a>
+        <a class="btn btn-outline-secondary ms-1 fw-bold" asp-action="Index">Voltar</a>
+    </div>
+</div>
+

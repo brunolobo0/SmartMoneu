@@ -1,0 +1,36 @@
+﻿@model smartmoney.Models.Categoria
+
+@{
+    ViewData["Title"] = "Editar categoria";
+}
+
+<div class="container my-4">
+<h1>Editar</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Titulo" class="control-label form-label"></label>
+                <input asp-for="Titulo" class="form-control" />
+                <span asp-validation-for="Titulo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label hidden asp-for="UsuarioId" class="control-label"></label>
+                <select hidden asp-for="UsuarioId" class="form-control" asp-items="ViewBag.UsuarioId"></select>
+                <span asp-validation-for="UsuarioId" class="text-danger"></span>
+            </div>
+            <div class="form-group my-3">
+                <input type="submit" value="Salvar" class="text-white btn btn-primary fw-bold" />
+                <a class="btn btn-outline-secondary ms-1 fw-bold" asp-action="Index">Voltar</a>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
